@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <B> <text="red">careated bu dipendra sah</B>
+  <title>Multi-Page Educational App</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --text: #1f2937;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navigation Header */
+    nav {
+      background-color: var(--primary);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav button {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav button:hover, nav button.active {
+      background-color: white;
+      color: var(--primary);
+    }
+
+    /* Section Container */
+    .page {
+      display: none;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Page 1: Number Chart Styling */
+    .chart-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 1rem;
+    }
+    .chart-item {
+      background: #e0e7ff;
+      padding: 10px;
+      text-align: center;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    /* Page 2 & 3: Formula Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Page 4: Calculator */
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 300px;
+      margin: 1rem auto;
+    }
+    #calc-screen {
+      grid-column: span 4;
+      height: 40px;
+      font-size: 1.5rem;
+      text-align: right;
+      padding: 5px 10px;
+    }
+    .calc-btn {
+      padding: 15px;
+      font-size: 1.2rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #f9fafb;
+    }
+    .calc-btn:hover { background: #e5e7eb; }
+
+    /* Page 5: Nepali Calendar Container */
+    .calendar-iframe {
+      width: 100%;
+      height: 420px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    /* Input Controls */
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+    input, select {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <button onclick="showPage('chart')" class="active">1. Number Chart</button>
+    <button onclick="showPage('science')">2. Science Formula</button>
+    <button onclick="showPage('math')">3. Math Formula</button>
+    <button onclick="showPage('calculator')">4. Calculator</button>
+    <button onclick="showPage('calendar')">5. Nepali Calendar</button>
+  </nav>
+
+  <section id="chart" class="page active">
+    <h2>Print Number Chart</h2>
+    <div class="controls">
+      <input type="number" id="chartNum" value="5" placeholder="Enter number">
+      <button onclick="generateChart()">Generate Chart</button>
+      <button onclick="window.print()">Print</button>
+    </div>
+    <div id="chartDisplay" class="chart-box"></div>
+  </section>
+
+  <section id="science" class="page">
+    <h2>Science Formulas (Class 8, 9 & 10)</h2>
+    <table>
+      <thead>
+        <tr><th>Class</th><th>Topic</th><th>Formula</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Class 8</td><td>Density</td><td>Density = Mass / Volume (d = m/v)</td></tr>
+        <tr><td>Class 8</td><td>Speed</td><td>Speed = Distance / Time (s = d/t)</td></tr>
+        <tr><td>Class 9</td><td>Force</td><td>Force = Mass × Acceleration (F = ma)</td></tr>
+        <tr><td>Class 9</td><td>Work Done</td><td>Work = Force × Distance (W = F × d)</td></tr>
+        <tr><td>Class 9</td><td>Pressure</td><td>Pressure = Force / Area (P = F/A)</td></tr>
+        <tr><td>Class 10</td><td>Gravity (Newton's Law)</td><td>F = G × (m₁ × m₂) / d²</td></tr>
+        <tr><td>Class 10</td><td>Ohm's Law</td><td>Voltage = Current × Resistance (V = I × R)</td></tr>
+        
+        <tr><td>Class 10</td><td>Power</td><td>Power = Work / Time (P = W/t)</td></tr>
+
+
+
+
+
+        
+      </tbody>
+    </table>
+  </section>
+
+  <section id="math" class="page">
+    <h2>Math Formulas (Class 8, 9 & 10)</h2>
+    <table>
+      <thead>
+        <tr><th>Class</th><th>Topic</th><th>Formula</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Class 8</td><td>Algebra</td><td>(a + b)² = a² + 2ab + b²</td></tr>
+        <tr><td>Class 8</td><td>Area of Circle</td><td>Area = πr²</td></tr>
+        <tr><td>Class 9</td><td>Simple Interest</td><td>SI = (P × T × R) / 100</td></tr>
+        <tr><td>Class 9</td><td>Pythagoras Theorem</td><td>h² = p² + b²</td></tr>
+        <tr><td>Class 10</td><td>Compound Interest</td><td>CI = P[(1 + R/100)ᵀ - 1]</td></tr>
+        <tr><td>Class 10</td><td>Cylinder Volume</td><td>Volume = πr²h</td></tr>
+        <tr><td>Class 10</td><td>Quadratic Equation</td><td>x = [-b ± √(b² - 4ac)] / 2a</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="calculator" class="page">
+    <h2 style="text-align: center;">Calculator</h2>
+    <div class="calc-grid">
+      <input type="text" id="calc-screen" readonly>
+      <button class="calc-btn" onclick="clearCalc()">C</button>
+      <button class="calc-btn" onclick="pressCalc('/')">/</button>
+      <button class="calc-btn" onclick="pressCalc('*')">*</button>
+      <button class="calc-btn" onclick="pressCalc('-')">-</button>
+      <button class="calc-btn" onclick="pressCalc('7')">7</button>
+      <button class="calc-btn" onclick="pressCalc('8')">8</button>
+      <button class="calc-btn" onclick="pressCalc('9')">9</button>
+      <button class="calc-btn" onclick="pressCalc('+')">+</button>
+      <button class="calc-btn" onclick="pressCalc('4')">4</button>
+      <button class="calc-btn" onclick="pressCalc('5')">5</button>
+      <button class="calc-btn" onclick="pressCalc('6')">6</button>
+      <button class="calc-btn" onclick="calculateResult()">=</button>
+      <button class="calc-btn" onclick="pressCalc('1')">1</button>
+      <button class="calc-btn" onclick="pressCalc('2')">2</button>
+      <button class="calc-btn" onclick="pressCalc('3')">3</button>
+      <button class="calc-btn" onclick="pressCalc('0')">0</button>
+    </div>
+  </section>
+
+  <section id="calendar" class="page">
+    <h2>Nepali Calendar (नेपाली पात्रो)</h2>
+    <iframe class="calendar-iframe" src="https://www.hamropatro.com/widgets/calender-medium.php" frameborder="0" scrolling="no"></iframe>
+  </section>
+
+  <script>
+    // Page Switching Logic
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      
+      document.getElementById(pageId).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // Page 1: Number Chart Logic
+    function generateChart() {
+      const num = document.getElementById('chartNum').value;
+      const display = document.getElementById('chartDisplay');
+      display.innerHTML = '';
+      if(!num) return;
+
+      for (let i = 1; i <= 10; i++) {
+        const item = document.createElement('div');
+        item.className = 'chart-item';
+        item.innerText = `${num} × ${i} = ${num * i}`;
+        display.appendChild(item);
+      }
+    }
+
+    // Page 4: Calculator Logic
+    let calcScreen = document.getElementById('calc-screen');
+    function pressCalc(val) {
+      calcScreen.value += val;
+    }
+    function clearCalc() {
+      calcScreen.value = '';
+    }
+    function calculateResult() {
+      try {
+        calcScreen.value = eval(calcScreen.value);
+      } catch {
+        calcScreen.value = 'Error';
+      }
+    }
+
+    // Default Load
+    window.onload = generateChart;
+  </script>
+</body>
+</html>
